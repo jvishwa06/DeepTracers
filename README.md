@@ -41,8 +41,8 @@ The model is trained using the following datasets:
 ## Model Details
 
 - **Federated Learning**: Due to computational complexities, we trained a separate model for each dataset and combined them using federated learning to form a unified final model.
-- **Accuracy**: Achieved an accuracy of **97.64%**.
-- **Inference Speed**: Implemented **Post-Training Quantization** for faster inference and reduced memory usage. Average inference time is between **120ms-150ms** with GPU utilization.
+- **Accuracy**: Achieved an accuracy of **98.64%**.
+- **Inference Speed**: Implemented **Post-Training Quantization** for faster inference and reduced memory usage. Average inference time is between **15ms-20ms** with GPU utilization.
 
 ## Key Use Cases
 
@@ -72,14 +72,10 @@ The model is trained using the following datasets:
 
 4. Start flask server:
    ```bash
-   python Backend/Models/Deepfake_backend.py
+   python Backend/Models/deepfake_backend.py
    ```
 
 
 ## License
 
 This project is licensed under the MIT License.
-
----
-
-Feel free to adjust any sections to fit your exact project setup!
