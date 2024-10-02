@@ -35,7 +35,7 @@ The model is trained using the following datasets:
 
 - **Frontend**: HTML, Tailwind CSS, React + Vite, Streamlit
 - **Backend**: Flask
-- **Database**: MongoDB, MySQL
+- **Database**: MongoDB
 - **Libraries & Frameworks**: PyTorch, TensorFlow, OpenCV, FaceNet_PyTorch, NumPy, Matplotlib, GradCAM
 
 ## Model Details
