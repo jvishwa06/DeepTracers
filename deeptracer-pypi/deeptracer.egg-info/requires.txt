@@ -1,0 +1,6 @@
+torch
+facenet-pytorch
+Pillow
+opencv-python
+numpy
+gdown

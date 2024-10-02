@@ -30,12 +30,16 @@ const LeftSidebar = () => {
     <nav className="leftsidebar">
       <div className="flex flex-col gap-11">
         <Link to="/" className="flex gap-3 items-center">
-          <img
-            src="public\images\logo.svg"
-            alt="logo"
-            width={170}
-            height={36}
-          />
+          {/* Replace image with INSTAGRAM text */}
+          <span
+            style={{
+              fontSize: "24px",
+              fontWeight: "bold",
+              color: "#fff", // White color
+            }}
+          >
+            INSTAGRAM
+          </span>
         </Link>
 
         <Link to={`/profile/${user.id}`} className="flex gap-3 items-center">

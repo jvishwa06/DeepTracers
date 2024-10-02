@@ -1,0 +1,9 @@
+torch
+facenet-pytorch
+opencv-python
+Pillow
+numpy
+scipy
+matplotlib
+tensorflow
+librosa
