@@ -14,9 +14,9 @@ export default function Home() {
         </p>
         
         <div className="flex flex-wrap justify-center gap-4">
-          <Button asChild>
+          {/* <Button asChild>
             <Link href="/detect">Detect Deepfakes</Link>
-          </Button>
+          </Button> */}
           <Button asChild>
             <Link href="/reverse-search">Reverse Image Search</Link>
           </Button>

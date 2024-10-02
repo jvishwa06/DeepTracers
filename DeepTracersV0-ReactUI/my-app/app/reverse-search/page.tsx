@@ -24,12 +24,14 @@ export default function Page() {
     setIsLoading(true)
 
     // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    setSearchResult([
-      { id: 1, platform: 'Google Images', url: 'https://example.com/image1', similarity: '95%' },
-      { id: 2, platform: 'TinEye', url: 'https://example.com/image2', similarity: '87%' },
-      { id: 3, platform: 'Bing Visual Search', url: 'https://example.com/image3', similarity: '82%' },
-    ])
+    // await new Promise(resolve => setTimeout(resolve, 2000))
+    // setSearchResult([
+    //   { id: 1, platform: 'Google Images', url: 'https://example.com/image1', similarity: '95%' },
+    //   { id: 2, platform: 'TinEye', url: 'https://example.com/image2', similarity: '87%' },
+    //   { id: 3, platform: 'Bing Visual Search', url: 'https://example.com/image3', similarity: '82%' },
+    // ])
+
+    
     setIsLoading(false)
   }
 
