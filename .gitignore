@@ -1,6 +1,6 @@
 snapgram/node_modules/
-Backend/Models/resnetinceptionv1_epoch_32.pth
-Backend/Models/uploads/
+Backend/resnetinceptionv1_epoch_32.pth
+Backend/uploads/
 Streamlit-Application/reports/
 Streamlit-Application/temp/
 Streamlit-Application/uploads/
