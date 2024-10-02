@@ -1,8 +1,9 @@
 snapgram/node_modules/
-Backend/resnetinceptionv1_epoch_32.pth
+# Backend/resnetinceptionv1_epoch_32.pth
 Backend/uploads/
 Streamlit-Application/reports/
 Streamlit-Application/temp/
 Streamlit-Application/uploads/
 deeptracers-venv/
 DeepfakeTestingData/
+DeepTracersV0-ReactUI/my-app/node_modules/
