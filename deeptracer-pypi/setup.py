@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='deeptracer',  # Package name
-    version='0.1.0',  # Initial version
+    version='0.1.1',  # Initial version
     packages=find_packages(),  # Automatically find packages
     install_requires=[  # List of dependencies
         'torch',          # Add other dependencies if necessary
