@@ -13,11 +13,15 @@ import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 export default function Page() {
-  const [searchResult, setSearchResult] = useState<Array<{ id: number, platform: string, url: string, similarity: string }> | null>(null)
+  const [searchResult, setSearchResult] = useState<Array<{ 
+    id: number, 
+    // platform: string, url: string, similarity: string,
+    result: string;
+  }> | null>(null)
   const [input, setInput] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [reportedIds, setReportedIds] = useState<number[]>([])
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState<File | null>(null)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -40,9 +44,6 @@ export default function Page() {
       const response = await fetch("http://localhost:5000/upload", {
         method: "POST",
         body: formData,
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
       });
 
       if (!response.ok) {
@@ -50,7 +51,10 @@ export default function Page() {
       }
 
       const data = await response.json();
-      console.log(data); 
+      if(response.status == 200){
+        console.log(data);
+        setSearchResult([{ id: Math.floor(Math.random()*10000), result: data.prediction }])
+      }
 
     } catch (error) {
       console.error('Error uploading file:', error);
@@ -173,16 +177,18 @@ export default function Page() {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Platform</TableHead>
+                  <TableHead>Image ID</TableHead>
+                  <TableHead>Result</TableHead>
+                  {/* <TableHead>Platform</TableHead>
                   <TableHead>URL</TableHead>
                   <TableHead>Similarity</TableHead>
-                  <TableHead>Action</TableHead>
+                  <TableHead>Action</TableHead> */}
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {searchResult.filter(result => !reportedIds.includes(result.id)).map((result) => (
                   <TableRow key={result.id}>
-                    <TableCell>{result.platform}</TableCell>
+                    {/* <TableCell>{result.platform}</TableCell>
                     <TableCell>
                       <a href={result.url} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
                         {result.url}
@@ -193,7 +199,9 @@ export default function Page() {
                       <Button variant="destructive" size="sm" onClick={() => handleReport(result.id)}>
                         Report
                       </Button>
-                    </TableCell>
+                    </TableCell> */}
+                    <TableCell>{result.id}</TableCell>
+                    <TableCell>{result.result[0].toUpperCase() + result.result.slice(1)}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>

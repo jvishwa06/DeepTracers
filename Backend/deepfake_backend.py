@@ -21,7 +21,8 @@ logging.basicConfig(level=logging.DEBUG)
 
 # Initialize Flask app and CORS
 app = Flask(__name__)
-CORS(app, resources={r"/upload": {"origins": "http://localhost:5173"}})
+CORS(app, resources={r"/upload": {"origins": ["http://localhost:3000", "http://localhost:5173"]}})
+
 
 # Configure device
 DEVICE = 'cuda:0' if torch.cuda.is_available() else 'cpu'
@@ -29,7 +30,8 @@ DEVICE = 'cuda:0' if torch.cuda.is_available() else 'cpu'
 # Load models
 mtcnn = MTCNN(select_largest=False, post_process=False, device=DEVICE).to(DEVICE).eval()
 model = InceptionResnetV1(pretrained='vggface2', classify=True, num_classes=1, device=DEVICE)
-checkpoint = torch.load('D:\\DeepTracers\\Backend\\resnetinceptionv1_epoch_32.pth', map_location=torch.device('cpu'))
+checkpoint_path = os.path.join(os.path.dirname(__file__), 'resnetinceptionv1_epoch_32.pth')
+checkpoint = torch.load(checkpoint_path, map_location=torch.device('cpu'))
 model.load_state_dict(checkpoint['model_state_dict'])
 model.to(DEVICE).eval()
 
@@ -85,7 +87,8 @@ def predictFake(path):
     else:
         mfccs = mfccs[:, :max_length]
 
-    model = load_model(r'C:\Users\iQube_VR\DeepfakeDetection\Backend\Models\audio_classifier.h5')
+    model_path = os.path.join(os.path.dirname(__file__), 'audio_classifier.h5')
+    model = load_model(model_path)
     output = model.predict(mfccs.reshape(-1, 40, 500))
     return "fake" if output[0][0] > 0.5 else "real"
 
@@ -129,7 +132,7 @@ def upload_file():
         finally:
             os.remove(file_path)
 
-    if 'audio' in request.files:
+    elif 'audio' in request.files:
         file = request.files['audio']
         if not file.filename:
             return jsonify({'error': 'No selected file'})
@@ -147,7 +150,7 @@ def upload_file():
         finally:
             os.remove(file_path)
 
-    if 'video' in request.files:
+    elif 'video' in request.files:
         file = request.files['video']
         if not file.filename:
             return jsonify({'error': 'No selected file'})
@@ -176,6 +179,8 @@ def upload_file():
             return jsonify({'error': str(e)})
         finally:
             os.remove(file_path)
+    else:
+        return {'error':'No required file provided'}
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
