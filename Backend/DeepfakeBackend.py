@@ -36,7 +36,7 @@ DEVICE = 'cuda:0' if torch.cuda.is_available() else 'cpu'
 mtcnn = MTCNN(select_largest=False, post_process=False, device=DEVICE).to(DEVICE).eval()
 model = InceptionResnetV1(pretrained='vggface2', classify=True, num_classes=1, device=DEVICE)
 checkpoint_path = os.path.join(os.path.dirname(__file__), 'resnetinceptionvit.pth')
-checkpoint = torch.load(checkpoint_path, map_location=torch.device('cpu'))
+checkpoint = torch.load(checkpoint_path, map_location=torch.device('cpu'),weights_only=True)
 model.load_state_dict(checkpoint['model_state_dict'])
 model.to(DEVICE).eval()
 
