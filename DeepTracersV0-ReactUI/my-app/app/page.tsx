@@ -6,7 +6,7 @@ export default function Home() {
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
         <h1 className="text-6xl font-bold mb-8">
-          Welcome to the Deepfake Detector
+          Welcome to the DeepTracerV0
         </h1>
         
         <p className="text-xl mb-8">
@@ -18,7 +18,7 @@ export default function Home() {
             <Link href="/detect">Detect Deepfakes</Link>
           </Button> */}
           <Button asChild>
-            <Link href="/reverse-search">Reverse Image Search</Link>
+            <Link href="/reverse-search">Detection with RIS</Link>
           </Button>
           <Button asChild>
             <Link href="/dashboard">View Dashboard</Link>
@@ -27,7 +27,7 @@ export default function Home() {
       </main>
 
       <footer className="w-full h-24 border-t border-gray-200 flex justify-center items-center">
-        <p>© 2023 Deepfake Detector. All rights reserved.</p>
+        <p>© 2024 DeepTracer. All rights reserved.</p>
       </footer>
     </div>
   )
